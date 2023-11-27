@@ -28,7 +28,7 @@ experiment1 <- function(n){
   Z <- r(Lap)(1)
   
   
-  num_iter = 50 # number of iterations to approximate FDR and power
+  num_iter = 5 # number of iterations to approximate FDR and power
   
   Xbeta = X %*% beta
   fdps = rep(0,num_iter)
@@ -60,21 +60,22 @@ experiment1 <- function(n){
     result = knockoff.filter(RX,Ry,fdr=0.2)
     fdps[i] <- fdp(result$selected)
     powers[i] <- power(result$selected)
-    cat(rep("-",40),"\n")
-    cat(i,"/",num_iter, " iteration for n =",n,"\nDP Knockoffs selects:", result$selected, "\nTrue model:", sort(nonzero),"\nFDP =",fdps[i],"Power =", powers[i],"\n")
+    cat(rep("-",50),"\n")
+    cat(i,"/",num_iter, " iteration for n =",n,"\nDP Knockoffs select:", result$selected, "\nTrue model:", sort(nonzero),"\nFDP =",fdps[i],"Power =", powers[i],"\n")
   }
   
-  cat("For n =",n, "FDR=",mean(fdps),"Power=",mean(powers))
+  cat(rep("=",50),"\n")
+  cat("For n =",n, "FDR=",mean(fdps),"Power=",mean(powers),"\n")
   result_list <- list(fdr = mean(fdps), power = mean(powers))
   return(result_list)
 }
 
-fdrs <- rep(0,15)
-powers <- rep(0,15)
+fdrs <- rep(0,2)
+powers <- rep(0,2)
 
-for (i in 1:10) {
-  n = 50000+10000*i
+for (i in 1:2) {
+  n = 100000+10000*i
   result <- experiment1(n)
-  fdrs[i] = result$fdp
+  fdrs[i] = result$fdr
   powers[i] = result$power
 }
