@@ -4,7 +4,6 @@ experiment1 <- function(n){
   library(tictoc)
   library(distr)
   
-  set.seed(1234)
   # model parameters
   p = 200
   k = 20
@@ -36,7 +35,6 @@ experiment1 <- function(n){
   power = function(selected) sum(beta[selected] != 0)/k
   fdp = function(selected) sum(beta[selected] == 0)/max(1,length(selected))
   for (i in 1:num_iter){
-    set.seed(Sys.time())
     y <- Xbeta +rnorm(n) # resample the noise here for the FDR computation
     
     # lower bounding singular values of [X;y]
