@@ -27,7 +27,7 @@ experiment1 <- function(n){
   Z <- r(Lap)(1)
   
   
-  num_iter = 5 # number of iterations to approximate FDR and power
+  num_iter = 100 # number of iterations to approximate FDR and power
   
   Xbeta = X %*% beta
   fdps = rep(0,num_iter)
@@ -68,11 +68,11 @@ experiment1 <- function(n){
   return(result_list)
 }
 
-fdrs <- rep(0,2)
-powers <- rep(0,2)
+fdrs <- rep(0,10)
+powers <- rep(0,10)
 
-for (i in 1:2) {
-  n = 100000+10000*i
+for (i in 1:10) {
+  n = 50000+10000*i
   result <- experiment1(n)
   fdrs[i] = result$fdr
   powers[i] = result$power
