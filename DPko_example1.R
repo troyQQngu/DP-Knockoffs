@@ -26,7 +26,6 @@ experiment1 <- function(n){
   Lap <- DExp(4*B^2/epsilon)
   Z <- r(Lap)(1)
   
-  
   num_iter = 100 # number of iterations to approximate FDR and power
   
   Xbeta = X %*% beta
@@ -35,7 +34,7 @@ experiment1 <- function(n){
   power = function(selected) sum(beta[selected] != 0)/k
   fdp = function(selected) sum(beta[selected] == 0)/max(1,length(selected))
   for (i in 1:num_iter){
-    y <- Xbeta +rnorm(n) # resample the noise here for the FDR computation
+    y <- Xbeta + rnorm(n) # resample the noise here for the FDR computation
     
     # lower bounding singular values of [X;y]
     A <- cbind(X,y)
@@ -49,7 +48,8 @@ experiment1 <- function(n){
       Ry <- R%*%y
       matrix_altered <- FALSE
     } else {
-      RA <- rbind(R%*%A,diag(rep(sqrt(w_sq),p+1)))
+      A_alt <- rbind(A,diag(rep(sqrt(w_sq),p+1)))
+      RA <- R%*%A_alt
       RX <- RA[,1:p]
       Ry <- RA[,p+1]
       matrix_altered <- TRUE
