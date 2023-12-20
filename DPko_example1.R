@@ -79,7 +79,7 @@ experiment1 <- function(n){
 fdrs <- rep(0,10)
 powers <- rep(0,10)
 
-for (i in 0:10) {
+for (i in 1:10) {
   n = 600000+10000*i
   result <- experiment1(n)
   fdrs[i] = result$fdr
