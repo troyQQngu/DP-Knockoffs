@@ -29,7 +29,7 @@ experiment2 <- function(n) {
   Lap <- DExp(4*B^2/epsilon)
   Z <- r(Lap)(1)
   
-  num_iter = 10 # number of iterations to approximate FDR and power
+  num_iter = 250# number of iterations to approximate FDR and power
   
   Xbeta = X %*% beta
   fdps = rep(0,num_iter)
@@ -84,7 +84,7 @@ n_iter = 17
 fdrs <- rep(0,n_iter)
 powers <- rep(0,n_iter)
 
-exp <- seq(4,6,length.out = n_iter)
+exp <- seq(6,7,length.out = n_iter)
 
 for (i in 1:n_iter) {
   n <- as.integer(10^exp[i])
