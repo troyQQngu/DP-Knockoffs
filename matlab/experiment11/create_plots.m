@@ -1,0 +1,59 @@
+figure
+for i = 1:5
+subplot(2,3,i)
+plot(fdr_th_list(i,:),power_th_list(i,:),LineStyle=":", LineWidth=1.5,Marker="*")
+hold on
+plot(fdr_list(i,:),power_list(i,:),LineStyle="-", LineWidth=1.5,Marker="*")
+xlim([0 0.5])
+ylim([0 0.5])
+xlabel('FDR')
+ylabel('Power')
+legend("FDR")
+end
+
+figure
+
+plot(fdr_th_list(1,:),power_th_list(1,:),LineStyle=":", LineWidth=1.5)
+hold on
+plot(fdr_list(1,:),power_list(1,:),LineStyle="-", LineWidth=1.5)
+
+figure
+plot(eps_list,fdr_list(1,:),LineStyle="-", Color = [0 0 1],LineWidth=1.5,Marker="o")
+hold on
+plot(eps_list,fdr_th_list(1,:),LineStyle=":", Color = [0 0.5 0.75], LineWidth=1.5,Marker="*")
+plot(eps_list,power_list(1,:),LineStyle="-",Color = [1 0 0], LineWidth=1.5,Marker="o")
+plot(eps_list,power_th_list(1,:),LineStyle=":",Color = [0.75 0.5 0], LineWidth=1.5,Marker="*")
+ylim([0 1])
+
+figure
+plot(eps_list,fdr_list(2,:),LineStyle="-", Color = [0 0 1],LineWidth=1.5,Marker="o")
+hold on
+plot(eps_list,fdr_th_list(2,:),LineStyle=":", Color = [0 0.5 0.75], LineWidth=1.5,Marker="*")
+plot(eps_list,power_list(2,:),LineStyle="-",Color = [1 0 0], LineWidth=1.5,Marker="o")
+plot(eps_list,power_th_list(2,:),LineStyle=":",Color = [0.75 0.5 0], LineWidth=1.5,Marker="*")
+ylim([0 1])
+
+figure
+plot(eps_list,fdr_list(3,:),LineStyle="-", Color = [0 0 1],LineWidth=1.5,Marker="o")
+hold on
+plot(eps_list,fdr_th_list(3,:),LineStyle=":", Color = [0 0.5 0.75], LineWidth=1.5,Marker="*")
+plot(eps_list,power_list(3,:),LineStyle="-",Color = [1 0 0], LineWidth=1.5,Marker="o")
+plot(eps_list,power_th_list(3,:),LineStyle=":",Color = [0.75 0.5 0], LineWidth=1.5,Marker="*")
+ylim([0 1])
+
+figure
+plot(eps_list,fdr_list(4,:),LineStyle="-", Color = [0 0 1],LineWidth=1.5,Marker="o")
+hold on
+plot(eps_list,fdr_th_list(4,:),LineStyle=":", Color = [0 0.5 0.75], LineWidth=1.5,Marker="*")
+plot(eps_list,power_list(4,:),LineStyle="-",Color = [1 0 0], LineWidth=1.5,Marker="o")
+plot(eps_list,power_th_list(4,:),LineStyle=":",Color = [0.75 0.5 0], LineWidth=1.5,Marker="*")
+ylim([0 1])
+
+figure(7)
+plot(eps_list,fdr_list(5,:),LineStyle="-", Color = [0 0 1],LineWidth=1.5,Marker="o")
+hold on
+plot(eps_list,fdr_th_list(5,:),LineStyle=":", Color = [0 0.5 0.75], LineWidth=1.5,Marker="*")
+plot(eps_list,power_list(5,:),LineStyle="-",Color = [1 0 0], LineWidth=1.5,Marker="o")
+plot(eps_list,power_th_list(5,:),LineStyle=":",Color = [0.75 0.5 0], LineWidth=1.5,Marker="*")
+ylim([0 1])
+
