@@ -1,0 +1,22 @@
+rng(199)
+load("diabetic_clean.mat")
+lambda_seq = [0.2 0.];
+K = 5;
+tol = 1e-3;
+max_iter = 1000;
+[bestLambda, bhat, bhat0, mse_mean, lambda_seq] = lasso_cv(X, y, lambda_seq, K, tol, max_iter);
+
+fprintf('Chosen lambda = %.4g\n', bestLambda);
+%disp('Coefficients:'); disp(bhat);
+
+[bhatsorted,sortidx] = sort(abs(bhat),'descend');
+
+nonzeroidx = find(bhatsorted);
+selection = sortidx(nonzeroidx);
+
+disp(selection(1:min(10,length(selection))))
+disp(bhat(selection(1:min(10,length(selection)))))
+
+%% try different lambda
+
+
